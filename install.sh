@@ -33,4 +33,8 @@ cp -r tank_arm ~/moveit_ws/src/
 cp -r moveit_arm ~/moveit_ws/src/
 cp -r xr_arm_publisher/ ~/moveit_ws/src/
 
+echo build source
+cd ~/moveit
+catkin_make
+
 echo install success
