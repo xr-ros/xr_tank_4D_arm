@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+#coding:utf-8
+
+import rospy
+import random
+
+from www_xiao_r_com import JointStatePublisher
+
+from python_qt_binding.QtCore import pyqtSlot
+from python_qt_binding.QtCore import Qt
+from python_qt_binding.QtCore import Signal
+from python_qt_binding.QtGui import QFont
+from python_qt_binding.QtWidgets import QApplication
+from python_qt_binding.QtWidgets import QHBoxLayout
+from python_qt_binding.QtWidgets import QLabel
+from python_qt_binding.QtWidgets import QLineEdit
+from python_qt_binding.QtWidgets import QPushButton
+from python_qt_binding.QtWidgets import QSlider
+from python_qt_binding.QtWidgets import QVBoxLayout
+from python_qt_binding.QtWidgets import QGridLayout
+from python_qt_binding.QtWidgets import QScrollArea
+from python_qt_binding.QtWidgets import QSpinBox
+from python_qt_binding.QtWidgets import QWidget
+import xml.dom.minidom
+from sensor_msgs.msg import JointState
+from math import pi
+from threading import Thread
+import sys
+import signal
+import math
+
+
+if __name__ == '__main__':
+    try:
+        rospy.init_node('joint_state_publisher')
+        jsp = JointStatePublisher()
+
+        if jsp.gui is None:
+            jsp.loop()
+        else:
+            Thread(target=jsp.loop).start()
+            signal.signal(signal.SIGINT, signal.SIG_DFL)
+            sys.exit(jsp.app.exec_())
+
+    except rospy.ROSInterruptException:
+        pass

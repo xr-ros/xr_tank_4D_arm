@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: tank_arm
+    relative_path: robots/tank_arm.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/tank_arm.srdf
+  CONFIG:
+    author_name: flieed
+    author_email: 823913946@qq.com
+    generated_timestamp: 1569653129

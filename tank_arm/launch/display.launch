@@ -1,0 +1,24 @@
+<launch>
+  <arg
+    name="model" />
+  <arg
+    name="gui"
+    default="True" />
+  <param
+    name="robot_description"
+    textfile="$(find tank_arm)/robots/tank_arm.urdf" />
+   
+  <node name="xr_arm_publisher" pkg="xr_arm_publisher"            	              type="xr_arm_publisher" >
+    <rosparam param="source_list">["servo_joint_states"]</rosparam>
+    <param name="use_gui" value="$(arg gui)"/>
+</node>
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="state_publisher" />
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find tank_arm)/urdf.rviz" />
+</launch>

@@ -1,0 +1,13 @@
+controller_list:
+  - name: fake_robot_arm_controller
+    joints:
+      - a
+      - b
+      - c
+  - name: fake_robot_claw_controller
+    joints:
+      - d
+  - name: fake_robot_pan_controller
+    joints:
+      - x
+      - y
